@@ -20,6 +20,66 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
+    flex-wrap: wrap;
+    border: limegreen;
+    border-style: solid;
+    border-width: 2%;
+}
+
+#bigbox header {
+    background-color: purple;
+    min-width: 100%;
+    min-height: auto;
+}
+
+h1 {
+    text-align: center;
+    font-size: 400%;
+    color: #ffff;
+}
+
+.quiz {
+    flex-flow: column wrap;
+    min-width: 100%;
+    min-height: auto;
+}
+
+#quiz {
+    background-color: #ffff;
+}
+
+h2 {
+    font-size: 200%;
+    text-align: center;
+}
+
+.answers {
+    display: flex;
+    flex-wrap: wrap;
+    min-width: 100%;
+    min-height: auto;
+    justify-content: space-around;
+}
+
+#answers {
+    background-color: honeydew;
+}
+
+.btn {
+    display: flex;
+    flex-wrap: wrap;
+    background-color: gold;
+    min-width: 40%;
+    min-height: auto;
+    justify-content: space-around;
+    margin-top: 10%;
+    margin-bottom: 10%;
+    font-size: 125%;
+    font-weight: bold;
+}
+
+.btn:hover {
+    background-color: aqua;
 }
 
 @media screen and (max-width: 900px) {
