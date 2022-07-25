@@ -105,6 +105,10 @@ p {
     background-color: aqua;
 }
 
+.hide {
+    display: none;
+}
+
 @media screen and (max-width: 900px) {
     body {
         flex-flow: column wrap;
