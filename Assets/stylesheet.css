@@ -38,6 +38,19 @@ h1 {
     color: #ffff;
 }
 
+nav a {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    color: #ffff;
+    font-size: 120%;
+}
+
+nav a:hover {
+    color: gold;
+}
+
 .quiz {
     flex-flow: column wrap;
     min-width: 100%;
@@ -51,6 +64,16 @@ h1 {
 h2 {
     font-size: 200%;
     text-align: center;
+}
+
+p {
+    flex-flow: row wrap;
+    justify-content: flex-start;
+    min-width: 100%;
+    min-height: auto;
+    font-size: 150%;
+    color: rgb(243, 10, 10);
+    font-weight: bold;
 }
 
 .answers {
