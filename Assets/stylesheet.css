@@ -41,9 +41,8 @@ h1 {
 #time h3 {
     display: flex;
     flex-flow: row wrap;
-    justify-content: right;
+    justify-content: left;
     font-size: 125%;
-    color: #ffff;
 }
 
 .hide {

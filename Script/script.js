@@ -1,4 +1,4 @@
-// So it knows hit is true
+// To denote the correct answer.
 var hit = true;
 // Array for the questions and answers.
 var questions = [
@@ -12,7 +12,7 @@ var questions = [
         ],
         hit: a,
     },
-
+    
     {
         question2: "What is JavaScript usually used for in web development?",   
         answer2: [
@@ -23,6 +23,7 @@ var questions = [
             ],
             hit: d,
     },
+    
     {
         question3: "What is the difference between querySelector and querySelectorAll?",
         answer3: [
@@ -33,6 +34,7 @@ var questions = [
             ],
             hit: a,
     },
+   
     {
         question4: "What is the difference between a method and a function?",
         answer4: [
@@ -43,6 +45,7 @@ var questions = [
         ],
         hit: a,
     },
+    
     {
         question5: "What is the purpose of an iteration?",
         answer5: [
@@ -53,6 +56,7 @@ var questions = [
             ],
             hit: d,
     },
+    
     {
         question6: "What type of statement begins with if?",
         answer6: [
@@ -63,6 +67,7 @@ var questions = [
             ],
             hit: c,
     },
+   
     {
         question7: "What does the push method do?",
         answer7: [
@@ -73,6 +78,7 @@ var questions = [
             ],
             hit: a,
     },
+
     {
         question8: "What are the three types of variable?",
         answer8: [
@@ -83,6 +89,7 @@ var questions = [
             ],
             hit: c,
     },
+
     {
         question9: "Which of the following correctly defines boolean?",
         answer9: [
@@ -94,6 +101,7 @@ var questions = [
             hit: d,
 
     },
+
     {
         question10: "Are Java and JavaScript related?",
         answer10: [
@@ -125,8 +133,9 @@ if (localStorage.getItem("userHiScore") !== null) {
 var inQuiz = false;
 
 
-// Query Selectors.
+// Variable for any button to start the quiz at the beginning.
 var quizbtn = document.querySelectorAll(".btn");
+// 
 var time = document.querySelector("#time");
 var a = document.querySelector("#one");
 var b = document.querySelector("#two");
@@ -134,11 +143,7 @@ var c = document.querySelector("#three");
 var d = document.querySelector("#four");
 var hiscore = document.querySelector("#hiscore");
 
-
-
-
-
-
+// quiz starts here.
 
 function startQuiz() {
     //variables for the quiz
@@ -146,24 +151,49 @@ function startQuiz() {
     points = 0;
     inQuiz = true;
     timer = 120;
-
-    quizTimer();
     
-    // Timer
-    function quizTimer()
-        var timer = setInterval(() => {
-            timer = timer--;
+    quizTimer();
 
-            if(timer === 0) {
-                //stops the time
-                clearInterval(timer);
-                // Calls the function that ends the quiz
-                stopQuiz();
-            }
-        }, 1000);
+};
+
+// Clears what is currently on the page
+function clearPage () {
+
+};
+
+// Brings on the next question; or the end of the quiz.
+function nextpage(){
+
+};
+
+// Adds to your score if you get an answer correct.
+function ansCorrect(){
+    score++;
+    quizArray++;
+    clearPage();
+    //placeholder for code to be written
+    //placeholder for code to be written
+    nextpage();
+
 }
 
-function clearPage () {
+// deducts from your time and keeps score when you get an answer wrong.
+function ansWrong(){
+    timer = timer - 10;
+    quizArray++;
+    clearPage();
+    //placeholder
+    //placeholder
+    nextpage();
+}
+   
+// Timer
+function quizTimer()
+    var timerLeft = setInterval(() => {
+        timerLeft = timer--;
+        }, 1000);
+
+function stopQuiz() {
 
 };
 
@@ -183,7 +213,7 @@ function hiscores() {
 function reset() {
 
 };
-
+console.log(quizTimer)
 
 // Event Listeners.
 
