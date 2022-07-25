@@ -38,6 +38,18 @@ h1 {
     color: #ffff;
 }
 
+#time h3 {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: right;
+    font-size: 125%;
+    color: #ffff;
+}
+
+.hide {
+    display: none;
+}
+
 nav a {
     display: flex;
     flex-direction: row;
@@ -103,10 +115,6 @@ p {
 
 .btn:hover {
     background-color: aqua;
-}
-
-.hide {
-    display: none;
 }
 
 @media screen and (max-width: 900px) {
