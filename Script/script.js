@@ -1,5 +1,5 @@
 // Array for the questions and answers.
-var questions = [ hit = true,
+var questions = [
     {
         question1: "What does DOM stand for?",    
         answer1: [
@@ -8,7 +8,6 @@ var questions = [ hit = true,
             {c: "Document Orientation Management", id: "c"}, 
             {d: "Document Object Machine", id: "d"},
         ],
-        hit: a,
     },
     
     {
@@ -19,7 +18,6 @@ var questions = [ hit = true,
             {c: "Military Applications", id: "c"}, 
             {d: "Creating interactive and dynamic web apps", id: "d"},
             ],
-            hit: d,
     },
     
     {
@@ -30,7 +28,6 @@ var questions = [ hit = true,
             {c: "querySelectorAll selects the entire page", id: "c"},
             {d: "None of the above", id: "d"},
             ],
-            hit: a,
     },
    
     {
@@ -41,7 +38,6 @@ var questions = [ hit = true,
             {c: "You can function but you can't method", id: "c"},
             {d: "None of the above", id: "d"},
         ],
-        hit: a,
     },
     
     {
@@ -52,7 +48,6 @@ var questions = [ hit = true,
             {c: "To destabilize the global economy", id: "c"},
             {d: "To get code to execute a certain number of times or until conditions are met", id: "d"},
             ],
-            true: d,
     },
     
     {
@@ -63,7 +58,6 @@ var questions = [ hit = true,
             {c: "A conditional statement", id: "c"},
             {d: "A fashion statement", id: "d"},
             ],
-            hit: c,
     },
    
     {
@@ -74,7 +68,6 @@ var questions = [ hit = true,
             {c: "Git pushes so you don't have to", id: "c"},
             {d: "All of the above", id: "d"},
             ],
-            hit: a,
     },
 
     {
@@ -85,7 +78,6 @@ var questions = [ hit = true,
             {c: "String, Boolean, and Number", id: "c"},
             {d: "None of the above.", id: "d"},
             ],
-            hit: c,
     },
 
     {
@@ -96,8 +88,6 @@ var questions = [ hit = true,
             {c: "That guy that always sits outside of the gas station", id: "c"},
             {d: "A variable set to true or false", id: "d"},
             ],
-            hit: d,
-
     },
 
     {
@@ -108,11 +98,10 @@ var questions = [ hit = true,
             {c: "No", id: "c"},
             {d: "Yes, but only by marriage", id: "d"},
             ],
-            hit: c,
     },
 ];
 
-// Goes through the question array
+// Index that goes through the array.
 var quizArray = 0;
 
 //correct answers
@@ -132,7 +121,7 @@ var inQuiz = false;
 
 
 // Variable for any button to start the quiz at the beginning.
-var quizbtn = document.querySelectorAll(".btn");
+var quizbtn = document.querySelector("#start");
 // Time keeping section
 var time = document.querySelector("#time");
 // A button
@@ -142,10 +131,11 @@ var b = document.querySelector("#two");
 // C button
 var c = document.querySelector("#three");
 // D button
-var d = document.querySelector("#four");
+var d = document.querySelector(".four");
 // High scores
 var hiscore = document.querySelector("#hiscore");
 
+console.log(d)
 
 // quiz starts here.
 
@@ -214,6 +204,5 @@ function reset() {
 };
 
 
-
 // Event Listeners.
-
+quizbtn.addEventListener("click", startQuiz);
