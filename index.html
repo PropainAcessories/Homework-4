@@ -10,55 +10,60 @@
   </head>
 
   <body>
+    <header>
+      <h1>Javascript Quiz</h1>
+      <h3 id = "time" class ="time"></h3>
+    </header>
+      <main class = "beercan">
+        <section class ="bigbox" id = "bigbox">
+            <div class="quiz" id="quiz">
+                <h2>Are you Ready?</h2>
+                  <p id="stats" class="stats"></p>
+            </div>
+            
+            <div class="quiz" id="strtbtn">
+                <button type = "button" id="start" class="btn">BEGIN.</button>
+            </div>
+            
+            <footer>
+              <button type = "button" class ="btn" id="hiscore">View Hiscores</button>
+            </footer>  
+        </section>
 
-
-    <div class ="bigbox" id = "bigbox">
-        <header>
-            <h1>Javascript Quiz</h1>
-            <h3 id = "time" class ="time"></h3>
-        </header>
-        
-        <div class="quiz" id="quiz">
-            <h2>Are you Ready?</h2>
-              <p id="stats" class="stats"></p>
-        </div>
-        
-        <div class="answers" id="answers">
-            <button type = "button" id="start" class="btn">BEGIN.</button>
-        </div>
-        
-        <footer>
-          <button type = "button" class ="btn" id="hiscore">View Hiscores</button>
-          <button type = "button" class = "btn" id = "reset">RESET</button>
-        </footer>  
-    </div>
-
-
-
-
-    <div class = "quiz" id = "finished">
-      <h2>Quiz Complete!!!!</h2>
-      <p></p>
-
-        <!--High score input form-->
-        <form class = "inputform" id = "inputform" onsubmit = "return false">
-          <div class = "line">
-            <label for = "initials" class = "initials" id = "initials">Initials here:</label>
-            <input type = "text" class = "inputxt" id ="inputxt" placeholder = "initials here">
-            <button type = "button" class = "btn" id = "submit">SUBMIT</button>
+        <!-- Section for questions and answers-->
+        <section class = "question" id = "question" hidden>
+          <div class = "answers" id = "answers">
           </div>
-        </form>
-    </div>
+          <div class = "hit">
+          </div>
+        </section>
 
-    <!-- High Score page-->
-    <div class = "quiz" id = "scorePage">
-      <h2>Highscores</h2>
-      <div id = "scoreList"></div>
-      <button type = "button" class="btn" id= "goBack">BACK</button>
-      <button type = "button" class="btn" id= "clear">CLEAR</button>
-    </div>
+        <section class = "bounce" id = "finished">
+          <h2>Quiz Complete!!!!</h2>
+          <p id = "userScore"></p>
 
-    <!-- Linking Javascript -->
-    <script src = "./Script/script.js"></script>
-  </body>
-</html>
+            <!--High score input form-->
+            <form class = "bounce" id = "inputform" onsubmit = "return false">
+              <div class = "line">
+                <label for = "initials" class = "initials" id = "initials">Initials here:</label>
+                <input type = "text" class = "inputxt" id ="inputxt" placeholder = "initials here">
+                <button type = "button" class = "btn" id = "submit">SUBMIT</button>
+              </div>
+            </form>
+        </section>
+
+        <!-- High Score page-->
+        <section class = "bounce" id = "scorePage">
+          <h2>Highscores</h2>
+          <div id = "scoreList"></div>
+            <button type = "button" class="btn" id= "goBack">BACK</button>
+            <button type = "button" class="btn" id= "clear">CLEAR</button>
+          </div>
+        </section>
+      </main>
+
+        <!-- Linking Javascript -->
+        <script src = "./Script/script.js"></script>
+      </body>
+    </html>
+    

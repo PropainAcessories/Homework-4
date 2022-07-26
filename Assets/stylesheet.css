@@ -26,7 +26,7 @@ body {
     border-width: 2%;
 }
 
-#bigbox header {
+header {
     background-color: purple;
     min-width: 100%;
     min-height: auto;
@@ -76,10 +76,6 @@ p {
     min-width: 100%;
     min-height: auto;
     justify-content: space-around;
-}
-
-#answers {
-    background-color: honeydew;
 }
 
 .btn {
