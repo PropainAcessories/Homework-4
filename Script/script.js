@@ -1,7 +1,5 @@
-// To denote the correct answer.
-var hit = true;
 // Array for the questions and answers.
-var questions = [
+var questions = [ hit = true,
     {
         question1: "What does DOM stand for?",    
         answer1: [
@@ -54,7 +52,7 @@ var questions = [
             {c: "To destabilize the global economy", id: "c"},
             {d: "To get code to execute a certain number of times or until conditions are met", id: "d"},
             ],
-            hit: d,
+            true: d,
     },
     
     {
@@ -135,12 +133,17 @@ var inQuiz = false;
 
 // Variable for any button to start the quiz at the beginning.
 var quizbtn = document.querySelectorAll(".btn");
-// 
+// Time keeping section
 var time = document.querySelector("#time");
+// A button
 var a = document.querySelector("#one");
+// B button
 var b = document.querySelector("#two");
+// C button
 var c = document.querySelector("#three");
+// D button
 var d = document.querySelector("#four");
+// High scores
 var hiscore = document.querySelector("#hiscore");
 
 
@@ -163,7 +166,7 @@ function clearPage () {
 };
 
 // Brings on the next question; or the end of the quiz.
-function nextpage(){
+function nextpage() {
 
 };
 
