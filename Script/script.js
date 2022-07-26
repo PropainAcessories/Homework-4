@@ -143,6 +143,7 @@ var c = document.querySelector("#three");
 var d = document.querySelector("#four");
 var hiscore = document.querySelector("#hiscore");
 
+
 // quiz starts here.
 
 function startQuiz() {
@@ -188,13 +189,10 @@ function ansWrong(){
 }
    
 // Timer
-function quizTimer()
-    var timerLeft = setInterval(() => {
+function quizTimer() {
+    var timerLeft = setInterval(function() {
         timerLeft = timer--;
-        }, 1000);
-
-function stopQuiz() {
-
+    }, 1000);
 };
 
 function stopQuiz() {
@@ -202,8 +200,6 @@ function stopQuiz() {
     inQuiz = false;
     clearPage();
     //Something to put scores up will go here
-
-
 };
 
 function hiscores() {
@@ -213,7 +209,8 @@ function hiscores() {
 function reset() {
 
 };
-console.log(quizTimer)
+
+
 
 // Event Listeners.
 

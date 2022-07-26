@@ -45,23 +45,6 @@ h1 {
     font-size: 125%;
 }
 
-.hide {
-    display: none;
-}
-
-nav a {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: flex-end;
-    color: #ffff;
-    font-size: 120%;
-}
-
-nav a:hover {
-    color: gold;
-}
-
 .quiz {
     flex-flow: column wrap;
     min-width: 100%;
@@ -114,6 +97,11 @@ p {
 
 .btn:hover {
     background-color: aqua;
+}
+
+footer {
+    min-width: none;
+    min-height: auto;
 }
 
 @media screen and (max-width: 900px) {
