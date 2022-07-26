@@ -179,7 +179,14 @@ function ansWrong(){
 // Timer
 function quizTimer() {
     var timerLeft = setInterval(function() {
-        timerLeft = timer--;
+        timer = timer-1;
+
+        time.innerHTML = timer;
+
+        if (timer <= 0 || quizArray === questions.length) {
+            clearInterval(timerLeft);
+            stopQuiz();
+        }
     }, 1000);
 };
 
