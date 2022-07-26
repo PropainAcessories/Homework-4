@@ -107,6 +107,10 @@ p {
     min-height: auto;
 }
 
+h1 #scorepage {
+    color: #0000;
+}
+
 .btn footer {
     min-width: auto;
     min-height: auto;

@@ -37,13 +37,13 @@
 
 
     <div class = "quiz" id = "finished">
-      <h1>Quiz Complete!!!!</h1>
+      <h2>Quiz Complete!!!!</h2>
       <p></p>
 
         <!--High score input form-->
         <form class = "inputform" id = "inputform" onsubmit = "return false">
           <div class = "line">
-            <label for = "initials" class = "initials" id = "initials">Initials here</label>
+            <label for = "initials" class = "initials" id = "initials">Initials here:</label>
             <input type = "text" class = "inputxt" id ="inputxt" placeholder = "initials here">
             <button type = "button" class = "btn" id = "submit">SUBMIT</button>
           </div>
@@ -51,7 +51,12 @@
     </div>
 
     <!-- High Score page-->
-
+    <div class = "quiz" id = "scorePage">
+      <h2>Highscores</h2>
+      <div id = "scoreList"></div>
+      <button type = "button" class="btn" id= "goBack">BACK</button>
+      <button type = "button" class="btn" id= "clear">CLEAR</button>
+    </div>
 
     <!-- Linking Javascript -->
     <script src = "./Script/script.js"></script>
