@@ -5,26 +5,55 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
     <title>Javascript Quiz!</title>
+    <!-- Linking stylesheet -->
     <link rel="Stylesheet" href="./Assets/stylesheet.css"/>
   </head>
+
   <body>
+
+
     <div class ="bigbox" id = "bigbox">
         <header>
             <h1>Javascript Quiz</h1>
             <h3 id = "time" class ="time"></h3>
         </header>
+        
         <div class="quiz" id="quiz">
             <h2>Are you Ready?</h2>
               <p id="stats" class="stats"></p>
         </div>
+        
         <div class="answers" id="answers">
             <button type = "button" id="start" class="btn">BEGIN.</button>
         </div>
+        
         <footer>
           <button type = "button" class ="btn" id="hiscore">View Hiscores</button>
           <button type = "button" class = "btn" id = "reset">RESET</button>
-        </footer>
+        </footer>  
     </div>
+
+
+
+
+    <div class = "quiz" id = "finished">
+      <h1>Quiz Complete!!!!</h1>
+      <p></p>
+
+        <!--High score input form-->
+        <form class = "inputform" id = "inputform" onsubmit = "return false">
+          <div class = "line">
+            <label for = "initials" class = "initials" id = "initials">Initials here</label>
+            <input type = "text" class = "inputxt" id ="inputxt" placeholder = "initials here">
+            <button type = "button" class = "btn" id = "submit">SUBMIT</button>
+          </div>
+        </form>
+    </div>
+
+    <!-- High Score page-->
+
+
+    <!-- Linking Javascript -->
     <script src = "./Script/script.js"></script>
   </body>
 </html>

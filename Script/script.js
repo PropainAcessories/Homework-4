@@ -122,12 +122,18 @@ var inQuiz = false;
 
 // Variable for any button to start the quiz at the beginning.
 var quizbtn = document.querySelector("#start");
+// To put in the questions
+var questionEl = document.querySelector("#quiz", "h2");
+// For the answers
+var answerEl = document.querySelector(".btn");
 // Time keeping section
 var time = document.querySelector("#time");
+// Buttons for the answers
+var mkBtn = document.createElement("button");
 // High scores
 var hiscore = document.querySelector("#hiscore");
 // Quiz Reset
-var reset = document.querySelector("#reset")
+var reset = document.querySelector("#reset");
 
 
 // quiz starts here.
@@ -147,7 +153,7 @@ function startQuiz() {
 
 // Clears what is currently on the page
 function clearPage () {
-
+    questionEl.textContent = "";
 };
 
 // Brings on the next question; or the end of the quiz.
@@ -194,7 +200,6 @@ function stopQuiz() {
     timer = 0;
     inQuiz = false;
     clearPage();
-    //Something to put scores up will go here
 };
 
 function scoreMgr(){
@@ -205,7 +210,7 @@ function hiscores() {
 
 };
 
-function reset() {
+function resetPage() {
 
 };
 

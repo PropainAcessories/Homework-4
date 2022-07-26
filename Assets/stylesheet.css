@@ -99,6 +99,14 @@ p {
     background-color: aqua;
 }
 
+#submit {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    min-width: 80%;
+    min-height: auto;
+}
+
 .btn footer {
     min-width: auto;
     min-height: auto;
