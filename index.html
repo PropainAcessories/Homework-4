@@ -38,12 +38,12 @@
           </div>
         </section>
 
-        <section class = "bounce" id = "finished">
+        <section class = "quiz" id = "finished" hidden>
           <h2>Quiz Complete!!!!</h2>
           <p id = "userScore"></p>
 
             <!--High score input form-->
-            <form class = "bounce" id = "inputform" onsubmit = "return false">
+            <form class = "inputform" id = "inputform" onsubmit = "return false">
               <div class = "line">
                 <label for = "initials" class = "initials" id = "initials">Initials here:</label>
                 <input type = "text" class = "inputxt" id ="inputxt" placeholder = "initials here">
@@ -53,7 +53,7 @@
         </section>
 
         <!-- High Score page-->
-        <section class = "bounce" id = "scorePage">
+        <section class = "scorePage" id = "scorePage" hidden>
           <h2>Highscores</h2>
           <div id = "scoreList"></div>
             <button type = "button" class="btn" id= "goBack">BACK</button>

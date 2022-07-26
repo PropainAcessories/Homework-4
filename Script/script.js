@@ -152,6 +152,8 @@ var userScore = document.querySelector("#userScore");
 var submitBtn = document.querySelector("#submit");
 // Time keeping section
 var time = document.querySelector("#time");
+//High scores.
+var scorePage = document.querySelector("#ScorePage");
 // for their initials
 var initials = document.querySelector("#inputform");
 // goes back to the main page
@@ -172,11 +174,6 @@ function startQuiz() {
 
     quizTimer();
 
-    bigBox.classList.remove("beercan");
-    bigBox.classList.add("bounce");
-
-    bigBox.classList.add("beercan");
-    bigBox.classList.remove("bounce");
     nextpage();
 
 };
@@ -187,7 +184,7 @@ function clearPage () {
     answerEl.textContent = "";
     hits.textContent = "";
 
-    if (showScore) {
+    if (scorePage) {
         // If quizArray >= 0 {
         bigBox.classList.remove("beercan");
         bigBox.classList.add("bounce");
@@ -208,9 +205,9 @@ function nextpage() {
 
     for (let i=0; i < questions[quizArray].answer.length; i++) {
         var mkBtn = document.createElement("button");
-        mkBtn.classList.add("btn");
+        //
         mkBtn.textContent = questions[quizArray].answer[i].choice;
-        answerEl.classList.add("beercan");
+        //
         answerEl.appendChild("mkBtn");
         if (questions[quizArray].answer[i].id === questions[quizArray].hit) {
             mkBtn.addEventListener("click", ansCorrect);
@@ -255,13 +252,12 @@ function quizTimer() {
     }, 1000);
 };
 
+// Stops the quiz
 function stopQuiz() {
     timer = 0;
     inQuiz = false;
     clearPage();
-    hiscore.removeAttribute("disabled");
-    finished.classList.remove("bounce");
-    finished.classList.add("beercan");
+
     userScore.textContent = points;
 
     if (initials.value !== "") {
@@ -270,28 +266,65 @@ function stopQuiz() {
 };
 
 function scoreMgr() {
+    // Retrieving and trimming the input
+    var initialValue = initials.value.trim();
 
-}
+    // Force the user to input initials.
+    if (
+        initialValue !== "" &&
+        typeof initials.value === "string" &&
+        initialValue.toLowerCase().match(/^[a-z]+$/)
+    ) {
+        userHiScore.push({initial: initialValue, score: points});
+        localStorage.setItem("userHiScore", JSON.stringify(userHiScore));
+
+        //clear page before hiscores
+
+        //show the scores
+        hiscores();
+    } else {
+        alert("Put in your initials.");
+    }
+};
 
 function hiscores() {
 
+    scorePage.innerHTML = "";
+
+    for (let i=0; i < userHiScore.length; i++) {
+        var  divEl = document.createElement("div");
+            divEl.classlist.add("bounce", "initial-score");
+            divEl.innerHTML=
+            i+
+            i+
+            "."+userHiScore[i].initial +
+            "-" +
+            userHiScore[i].points;
+        scorePage.textContent = "";
+    }
 };
 
-function resetPage() {
+function startOver() {
+    timer = 0;
+    time.innerHTML = timer;
 
 };
+
 
 function clearScore() {
-
-}
+    userHiScore.splice(0, userHiScore.length);
+    localStorage.removeItem(userHiScore);
+    scorePage.textContent = "";
+};
 
 function showScore() {
-
+    clearPage();
+    hiscores();
 }
-
 
 // Event Listeners.
 quizbtn.addEventListener("click", startQuiz);
-
-
-
+submitBtn.addEventListener("click", scoreMgr);
+goback.addEventListener("click", startOver);
+cleanScores.addEventListener("click", clearScore);
+hiscore.addEventListener("click", showScore);
