@@ -124,18 +124,11 @@ var inQuiz = false;
 var quizbtn = document.querySelector("#start");
 // Time keeping section
 var time = document.querySelector("#time");
-// A button
-var a = document.querySelector("#one");
-// B button
-var b = document.querySelector("#two");
-// C button
-var c = document.querySelector("#three");
-// D button
-var d = document.querySelector(".four");
 // High scores
 var hiscore = document.querySelector("#hiscore");
+// Quiz Reset
+var reset = document.querySelector("#reset")
 
-console.log(d)
 
 // quiz starts here.
 
@@ -145,7 +138,9 @@ function startQuiz() {
     points = 0;
     inQuiz = true;
     timer = 120;
-    
+    hiscore.setAttribute("disabled", "true");
+    reset.setAttribute("disabled", "true");
+
     quizTimer();
 
 };
@@ -195,6 +190,10 @@ function stopQuiz() {
     //Something to put scores up will go here
 };
 
+function scoreMgr(){
+
+}
+
 function hiscores() {
 
 };
@@ -203,6 +202,17 @@ function reset() {
 
 };
 
+function clearScore() {
+
+}
+
+function showScore() {
+
+}
+
 
 // Event Listeners.
 quizbtn.addEventListener("click", startQuiz);
+
+
+

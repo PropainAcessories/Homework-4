@@ -99,26 +99,8 @@ p {
     background-color: aqua;
 }
 
-.four {
-    display: flex;
-    flex-wrap: wrap;
-    background-color: gold;
-    min-width: 40%;
-    min-height: auto;
-    justify-content: space-around;
-    margin-top: 10%;
-    margin-bottom: 10%;
-    font-size: 125%;
-    font-weight: bold;
-}
-
-.four:hover {
-    background-color: aqua;
-}
-
-
-footer {
-    min-width: none;
+.btn footer {
+    min-width: auto;
     min-height: auto;
 }
 
