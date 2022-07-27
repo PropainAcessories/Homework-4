@@ -162,17 +162,6 @@ function clearPage () {
     questionEl.innerHTML = "";
     answerEl.textContent = "";
     hits.innerHTML = "";
-
-    if (hiscore) {
-        bigBox.style.display = "none";
-        scorePage.style.display = "block";
-        // This is wrong but it breaks without it, or if you correct it.
-        scorepage.classList.remove("quiz");
-        scorePage.classList.add("bigbox");
-    } else {
-            return;
-    }
-    //}
 };
 
 // Brings on the next question; or the end of the quiz.
@@ -204,7 +193,7 @@ function ansCorrect(){
     points++;
     quizArray++;
     clearPage();
-    hits.innerHTML = "CORRECT"
+    hits.innerHTML = "CORRECT";
     nextpage();
 }
 
@@ -214,7 +203,6 @@ function ansWrong(){
     timer = timer - 1;
     quizArray++;
     clearPage();
-    hits.innerHTML = "WRONG"
     nextpage();
 }
    
