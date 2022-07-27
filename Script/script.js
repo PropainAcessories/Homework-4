@@ -134,6 +134,11 @@ var inQuiz = false;
 var quizbtn = document.querySelector("#start");
 // Selects the main section of the page
 var bigBox = document.querySelector("#bigbox");
+// Answer buttons
+var aBtn = document.querySelector("#a");
+var bBtn = document.querySelector("#b");
+var cBtn = document.querySelector("#c");
+var dBtn = document.querySelector("#d");
 // To access the question section
 var question1 = document.querySelector("#question");
 // To put in the questions
@@ -153,7 +158,7 @@ var submitBtn = document.querySelector("#submit");
 // Time keeping section
 var time = document.querySelector("#time");
 //High scores.
-var scorePage = document.querySelector("#ScorePage");
+var scorePage = document.querySelector("#scorePage");
 // for their initials
 var initials = document.querySelector("#inputform");
 // goes back to the main page
@@ -180,16 +185,16 @@ function startQuiz() {
 
 // Clears what is currently on the page
 function clearPage () {
-    questionEl.textContent = "";
-    answerEl.textContent = "";
-    hits.textContent = "";
+    // If quizArray >= 0 {
+    questionEl.innerHTML = "";
+    answerEl.innerHTML = "";
+    hits.innerHTML = "";
 
-    if (scorePage) {
-        // If quizArray >= 0 {
-        bigBox.classList.remove("beercan");
-        bigBox.classList.add("bounce");
-        finished.classList.remove("beercan");
-        finished.classList.add("bounce");
+    if (hiscore) {
+        bigBox.style.display = "none";
+        scorePage.style.display = "block";
+        finished.classList.remove("quiz");
+        finished.classList.add("bigbox");
     } else {
         return;
     }
@@ -205,10 +210,11 @@ function nextpage() {
 
     for (let i=0; i < questions[quizArray].answer.length; i++) {
         var mkBtn = document.createElement("button");
-        //
-        mkBtn.textContent = questions[quizArray].answer[i].choice;
-        //
-        answerEl.appendChild("mkBtn");
+        bigBox.style.display = "none";
+        questionEl.style.display = "block";
+        answerEl.style.display = "block";
+        mkBtn.innerHTML = questions[quizArray].answer[i].choice;
+        answerEl.appendChild(mkBtn);
         if (questions[quizArray].answer[i].id === questions[quizArray].hit) {
             mkBtn.addEventListener("click", ansCorrect);
         } else {
@@ -224,7 +230,7 @@ function ansCorrect(){
     score++;
     quizArray++;
     clearPage();
-    hits.textContent = "CORRECT"
+    hits.innerHTML = "CORRECT"
     nextpage();
 
 }
@@ -234,7 +240,7 @@ function ansWrong(){
     timer = timer - 10;
     quizArray++;
     clearPage();
-    hits.textContent = "WRONG"
+    hits.innerHTML = "WRONG"
     nextpage();
 }
    
@@ -257,8 +263,9 @@ function stopQuiz() {
     timer = 0;
     inQuiz = false;
     clearPage();
+    show
 
-    userScore.textContent = points;
+    userScore.innerHTML = points;
 
     if (initials.value !== "") {
         initials.value = "";
@@ -279,7 +286,9 @@ function scoreMgr() {
         localStorage.setItem("userHiScore", JSON.stringify(userHiScore));
 
         //clear page before hiscores
-
+        bigBox.style.display = "none";
+        finished.style.display = "block";
+        
         //show the scores
         hiscores();
     } else {
@@ -293,28 +302,30 @@ function hiscores() {
 
     for (let i=0; i < userHiScore.length; i++) {
         var  divEl = document.createElement("div");
-            divEl.classlist.add("bounce", "initial-score");
+            //
             divEl.innerHTML=
             i+
             i+
             "."+userHiScore[i].initial +
             "-" +
             userHiScore[i].points;
-        scorePage.textContent = "";
+        scorePage.innerHTML = "";
     }
 };
 
 function startOver() {
     timer = 0;
     time.innerHTML = timer;
-
+    scorePage.classList.add("bigBox");
+    scorePage.classList.remove("scorePage");
+    bigBox.classList.add("quiz");
 };
 
 
 function clearScore() {
     userHiScore.splice(0, userHiScore.length);
-    localStorage.removeItem(userHiScore);
-    scorePage.textContent = "";
+    localStorage.removeItem("userHiScore");
+    scorePage.textContent = "";   
 };
 
 function showScore() {
@@ -325,6 +336,10 @@ function showScore() {
 // Event Listeners.
 quizbtn.addEventListener("click", startQuiz);
 submitBtn.addEventListener("click", scoreMgr);
-goback.addEventListener("click", startOver);
 cleanScores.addEventListener("click", clearScore);
 hiscore.addEventListener("click", showScore);
+
+goback.addEventListener("click", function() {
+    scorePage.style.display = "none";
+    bigBox.style.display = "block";
+});

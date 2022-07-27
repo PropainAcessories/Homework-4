@@ -14,7 +14,7 @@
       <h1>Javascript Quiz</h1>
       <h3 id = "time" class ="time"></h3>
     </header>
-      <main class = "beercan">
+      <main class = "container">
         <section class ="bigbox" id = "bigbox">
             <div class="quiz" id="quiz">
                 <h2>Are you Ready?</h2>
@@ -31,14 +31,21 @@
         </section>
 
         <!-- Section for questions and answers-->
-        <section class = "question" id = "question" hidden>
+        <section class = "question" id = "question">
+          <h2></h2>
           <div class = "answers" id = "answers">
-          </div>
-          <div class = "hit">
+              <div class = "hit">
+            <button type = "button" id="a" class="btn"></button>
+            <button type = "button" id="b" class="btn"></button>
+            <button type = "button" id="c" class="btn"></button>
+            <button type = "button" id="d" class="btn"></button>
           </div>
         </section>
 
-        <section class = "quiz" id = "finished" hidden>
+       
+       
+        <!-- Quiz complete section -->
+        <section class = "finished" id = "finished">
           <h2>Quiz Complete!!!!</h2>
           <p id = "userScore"></p>
 
@@ -53,8 +60,9 @@
         </section>
 
         <!-- High Score page-->
-        <section class = "scorePage" id = "scorePage" hidden>
+        <section class = "scorePage" id = "scorePage">
           <h2>Highscores</h2>
+            <p></p>
           <div id = "scoreList"></div>
             <button type = "button" class="btn" id= "goBack">BACK</button>
             <button type = "button" class="btn" id= "clear">CLEAR</button>

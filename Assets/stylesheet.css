@@ -16,7 +16,7 @@ body {
     min-height: 100vh;
 }
 
-.bigbox {
+.container {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -52,6 +52,13 @@ h1 {
 
 #quiz {
     background-color: #ffff;
+}
+
+#question,
+#finished,
+#scorePage {
+    display: none;
+    font-size: 125%;
 }
 
 h2 {
