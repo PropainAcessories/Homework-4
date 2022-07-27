@@ -87,28 +87,6 @@ var questions = [
             ],
             hit: "c",
     },
-
-    {
-        question: "Which of the following correctly defines boolean?",
-        answer: [
-            {choice: "A spicy soup from Lousiana", id: "a"},
-            {choice: "A spicy soup from the Middle-East", id: "b"},
-            {choice: "That guy that always sits outside of the gas station", id: "c"},
-            {choice: "A variable set to true or false", id: "d"},
-            ],
-            hit: "d",
-    },
-
-    {
-        question: "Are Java and JavaScript related?",
-        answer: [
-            {choice: "Yes by blood", id: "a"},
-            {choice: "Yes Same inventor", id: "b"},
-            {choice: "No", id: "c"},
-            {choice: "Yes, but only by marriage", id: "d"},
-            ],
-            hit: "c",
-    },
 ];
 
 // Index that goes through the array.
@@ -134,23 +112,18 @@ var inQuiz = false;
 var quizbtn = document.querySelector("#start");
 // Selects the main section of the page
 var bigBox = document.querySelector("#bigbox");
-// Answer buttons
-var aBtn = document.querySelector("#a");
-var bBtn = document.querySelector("#b");
-var cBtn = document.querySelector("#c");
-var dBtn = document.querySelector("#d");
 // To access the question section
 var question1 = document.querySelector("#question");
 // To put in the questions
 var questionEl = document.querySelector(".question");
 // For the answers
-var answerEl = document.querySelector(".answers");
+var answerEl = document.querySelector("#answers");
 // For Hits
 var hits = document.querySelector(".hit");
 // Buttons for the answers
 var mkBtn = document.createElement("button");
 // For the done page
-var finished = document.querySelector("#finshed");
+var finished = document.querySelector(".finshed");
 // Defines the score
 var userScore = document.querySelector("#userScore");
 // For the submit button
@@ -160,7 +133,7 @@ var time = document.querySelector("#time");
 //High scores.
 var scorePage = document.querySelector("#scorePage");
 // for their initials
-var initials = document.querySelector("#inputform");
+var initials = document.querySelector("#inputxt");
 // goes back to the main page
 var goback = document.querySelector("#goBack");
 // clears the highscores
@@ -174,7 +147,7 @@ function startQuiz() {
     quizArray = 0;
     points = 0;
     inQuiz = true;
-    timer = 120;
+    timer = 30;
     hiscore.setAttribute("disabled", "true");
 
     quizTimer();
@@ -187,16 +160,17 @@ function startQuiz() {
 function clearPage () {
     // If quizArray >= 0 {
     questionEl.innerHTML = "";
-    answerEl.innerHTML = "";
+    answerEl.textContent = "";
     hits.innerHTML = "";
 
     if (hiscore) {
         bigBox.style.display = "none";
         scorePage.style.display = "block";
-        finished.classList.remove("quiz");
-        finished.classList.add("bigbox");
+        // This is wrong but it breaks without it, or if you correct it.
+        scorepage.classList.remove("quiz");
+        scorePage.classList.add("bigbox");
     } else {
-        return;
+            return;
     }
     //}
 };
@@ -206,38 +180,38 @@ function nextpage() {
     if (!inQuiz || quizArray === questions.length) return;
     // Puts a margin on the bottom of the questions.
     questionEl.classList.add("mb-5");
+    //shows the question
     questionEl.innerHTML = questions[quizArray].question;
 
     for (let i=0; i < questions[quizArray].answer.length; i++) {
-        var mkBtn = document.createElement("button");
-        bigBox.style.display = "none";
-        questionEl.style.display = "block";
-        answerEl.style.display = "block";
-        mkBtn.innerHTML = questions[quizArray].answer[i].choice;
-        answerEl.appendChild(mkBtn);
-        if (questions[quizArray].answer[i].id === questions[quizArray].hit) {
-            mkBtn.addEventListener("click", ansCorrect);
-        } else {
-            mkBtn.addEventListener("click", ansWrong);
-        }
-
-    }
-
+            var mkBtn = document.createElement("button");
+            mkBtn.classList.add("btn");
+            mkBtn.innerHTML = questions[quizArray].answer[i].choice;
+            bigBox.style.display = "none";
+            questionEl.style.display = "block";
+            answerEl.style.display = "block";
+            answerEl.appendChild(mkBtn);
+            if (questions[quizArray].answer[i].id === questions[quizArray].hit) {
+                mkBtn.addEventListener("click", ansCorrect);
+            } else {
+                mkBtn.addEventListener("click", ansWrong);
+            }
+     }
 };
 
 // Adds to your score if you get an answer correct.
 function ansCorrect(){
-    score++;
+    points++;
     quizArray++;
     clearPage();
     hits.innerHTML = "CORRECT"
     nextpage();
-
 }
 
 // deducts from your time and keeps score when you get an answer wrong.
 function ansWrong(){
-    timer = timer - 10;
+    points--;
+    timer = timer - 1;
     quizArray++;
     clearPage();
     hits.innerHTML = "WRONG"
@@ -254,6 +228,7 @@ function quizTimer() {
         if (timer <= 0 || quizArray === questions.length) {
             clearInterval(timerLeft);
             stopQuiz();
+            finished.style.display = "block";
         }
     }, 1000);
 };
@@ -263,7 +238,7 @@ function stopQuiz() {
     timer = 0;
     inQuiz = false;
     clearPage();
-    show
+    hiscore.removeAttribute("disabled", false);
 
     userScore.innerHTML = points;
 
@@ -282,7 +257,7 @@ function scoreMgr() {
         typeof initials.value === "string" &&
         initialValue.toLowerCase().match(/^[a-z]+$/)
     ) {
-        userHiScore.push({initial: initialValue, score: points});
+        userHiScore.push({initials: initialValue, score: points});
         localStorage.setItem("userHiScore", JSON.stringify(userHiScore));
 
         //clear page before hiscores
@@ -316,16 +291,18 @@ function hiscores() {
 function startOver() {
     timer = 0;
     time.innerHTML = timer;
-    scorePage.classList.add("bigBox");
-    scorePage.classList.remove("scorePage");
-    bigBox.classList.add("quiz");
+
+
+    scorePage.style.display = "none";
+    bigBox.style.display = "block";
 };
 
 
 function clearScore() {
     userHiScore.splice(0, userHiScore.length);
     localStorage.removeItem("userHiScore");
-    scorePage.textContent = "";   
+    scorePage.textContent = "";
+    startOver();   
 };
 
 function showScore() {

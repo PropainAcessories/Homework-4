@@ -54,11 +54,19 @@ h1 {
     background-color: #ffff;
 }
 
+#answers{
+    display: none;
+    flex-direction: row;
+    flex-wrap: wrap;
+    font-size: 150%;
+}
+
 #question,
 #finished,
 #scorePage {
     display: none;
-    font-size: 125%;
+    font-size: 200%;
+    text-align: center;
 }
 
 h2 {
