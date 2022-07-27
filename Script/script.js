@@ -136,10 +136,12 @@ var scorePage = document.querySelector("#scorePage");
 var initials = document.querySelector("#inputxt");
 // goes back to the main page
 var goback = document.querySelector("#goBack");
+// for the form
+var form = document.querySelector(".inputform")
 // clears the highscores
 var cleanScores = document.querySelector("#clear");
 // High score button
-var hiscore = document.querySelector("#hiscore");
+var hiscorebtn = document.querySelector("#hiscore");
 // quiz starts here.
 
 function startQuiz() {
@@ -147,8 +149,7 @@ function startQuiz() {
     quizArray = 0;
     points = 0;
     inQuiz = true;
-    timer = 30;
-    hiscore.setAttribute("disabled", "true");
+    timer = 45;
 
     quizTimer();
 
@@ -158,7 +159,6 @@ function startQuiz() {
 
 // Clears what is currently on the page
 function clearPage () {
-    // If quizArray >= 0 {
     questionEl.innerHTML = "";
     answerEl.textContent = "";
     hits.innerHTML = "";
@@ -193,14 +193,12 @@ function ansCorrect(){
     points++;
     quizArray++;
     clearPage();
-    hits.innerHTML = "CORRECT";
     nextpage();
 }
 
 // deducts from your time and keeps score when you get an answer wrong.
 function ansWrong(){
-    points--;
-    timer = timer - 1;
+    timer = timer - 5;
     quizArray++;
     clearPage();
     nextpage();
@@ -216,7 +214,6 @@ function quizTimer() {
         if (timer <= 0 || quizArray === questions.length) {
             clearInterval(timerLeft);
             stopQuiz();
-            finished.style.display = "block";
         }
     }, 1000);
 };
@@ -226,7 +223,7 @@ function stopQuiz() {
     timer = 0;
     inQuiz = false;
     clearPage();
-    hiscore.removeAttribute("disabled", false);
+    scorePage.style.display = "block";
 
     userScore.innerHTML = points;
 
@@ -236,6 +233,10 @@ function stopQuiz() {
 };
 
 function scoreMgr() {
+    bigBox.style.display = "none";
+    finished.style.display = "block";
+
+
     // Retrieving and trimming the input
     var initialValue = initials.value.trim();
 
@@ -260,6 +261,8 @@ function scoreMgr() {
 };
 
 function hiscores() {
+    bigBox.style.display = "none";
+    scorePage.style.display = "block";
 
     scorePage.innerHTML = "";
 
@@ -272,7 +275,7 @@ function hiscores() {
             "."+userHiScore[i].initial +
             "-" +
             userHiScore[i].points;
-        scorePage.innerHTML = "";
+        scorePage.appendChild(divEl);
     }
 };
 
@@ -280,11 +283,9 @@ function startOver() {
     timer = 0;
     time.innerHTML = timer;
 
-
     scorePage.style.display = "none";
     bigBox.style.display = "block";
-};
-
+}
 
 function clearScore() {
     userHiScore.splice(0, userHiScore.length);
@@ -302,7 +303,7 @@ function showScore() {
 quizbtn.addEventListener("click", startQuiz);
 submitBtn.addEventListener("click", scoreMgr);
 cleanScores.addEventListener("click", clearScore);
-hiscore.addEventListener("click", showScore);
+hiscorebtn.addEventListener("click", hiscores);
 
 goback.addEventListener("click", function() {
     scorePage.style.display = "none";

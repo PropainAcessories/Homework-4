@@ -62,7 +62,7 @@ h1 {
 }
 
 #question,
-#finished,
+.finished,
 #scorePage {
     display: none;
     font-size: 200%;
