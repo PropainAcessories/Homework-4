@@ -104,6 +104,8 @@ if (localStorage.getItem("userHiScore") !== null) {
         userHiScore = JSON.parse(localStorage.getItem("userHiScore"));
 };
 
+console.log(userHiScore)
+
 // Variable to check if quiz is ongoing
 var inQuiz = false;
 
@@ -132,6 +134,8 @@ var submitBtn = document.querySelector("#submit");
 var time = document.querySelector("#time");
 //High scores.
 var scorePage = document.querySelector("#scorePage");
+// Leaderboard
+var leaderboard = document.querySelector("#leaderboard");
 // for their initials
 var initials = document.querySelector("#inputxt");
 // goes back to the main page
@@ -177,8 +181,8 @@ function nextpage() {
             mkBtn.classList.add("btn");
             mkBtn.innerHTML = questions[quizArray].answer[i].choice;
             bigBox.style.display = "none";
-            questionEl.style.display = "block";
-            answerEl.style.display = "block";
+            questionEl.style.display = "flex";
+            answerEl.style.display = "flex";
             answerEl.appendChild(mkBtn);
             if (questions[quizArray].answer[i].id === questions[quizArray].hit) {
                 mkBtn.addEventListener("click", ansCorrect);
@@ -223,6 +227,7 @@ function stopQuiz() {
     timer = 0;
     inQuiz = false;
     clearPage();
+    bigBox.style.display = "none";
     scorePage.style.display = "block";
 
     userScore.innerHTML = points;
@@ -233,8 +238,8 @@ function stopQuiz() {
 };
 
 function scoreMgr() {
-    bigBox.style.display = "none";
-    finished.style.display = "block";
+    scorePage.style.display = "none";
+    leaderboard.style.display = "block";
 
 
     // Retrieving and trimming the input
@@ -250,32 +255,33 @@ function scoreMgr() {
         localStorage.setItem("userHiScore", JSON.stringify(userHiScore));
 
         //clear page before hiscores
-        bigBox.style.display = "none";
-        finished.style.display = "block";
-        
-        //show the scores
-        hiscores();
+        scorePage.style.display = "none";
+        leaderboard.style.display = "block";
     } else {
         alert("Put in your initials.");
     }
+            
+        //show the scores
+        hiscores();
 };
 
 function hiscores() {
     bigBox.style.display = "none";
-    scorePage.style.display = "block";
+    leaderboard.style.display = "block";
+    leaderboard.classList.add
 
-    scorePage.innerHTML = "";
+    leaderboard.textContent = "";
 
     for (let i=0; i < userHiScore.length; i++) {
-        var  divEl = document.createElement("div");
-            //
-            divEl.innerHTML=
-            i+
-            i+
-            "."+userHiScore[i].initial +
-            "-" +
-            userHiScore[i].points;
-        scorePage.appendChild(divEl);
+            var liEl = document.createElement("li");
+            liEl.textContent =
+                leaderboard.innerHTML=
+                i+
+                i+
+                "."+userHiScore[i].initials +
+                "-" +
+                userHiScore[i].points;
+            leaderboard.appendChild("li");
     }
 };
 
@@ -283,14 +289,14 @@ function startOver() {
     timer = 0;
     time.innerHTML = timer;
 
-    scorePage.style.display = "none";
+    leaderboard.style.display = "none";
     bigBox.style.display = "block";
 }
 
 function clearScore() {
     userHiScore.splice(0, userHiScore.length);
     localStorage.removeItem("userHiScore");
-    scorePage.textContent = "";
+    leaderboard.textContent = "";
     startOver();   
 };
 
@@ -305,7 +311,7 @@ submitBtn.addEventListener("click", scoreMgr);
 cleanScores.addEventListener("click", clearScore);
 hiscorebtn.addEventListener("click", hiscores);
 
-goback.addEventListener("click", function() {
+goback.addEventListener("click", startOver); {
     scorePage.style.display = "none";
     bigBox.style.display = "block";
-});
+};

@@ -43,7 +43,6 @@
 
         <!-- High Score page-->
         <section class = "scorePage" id = "scorePage">
-          <h2>Highscores</h2>
             <p></p>
           <h2>Quiz Complete!!!!</h2>
             <p id = "userScore"></p>
@@ -54,12 +53,20 @@
                   <button type = "button" class = "btn" id = "submit">SUBMIT</button>
                 </div>
               </form>
-            <button type = "button" class="btn" id= "goBack">BACK</button>
-            <button type = "button" class="btn" id= "clear">CLEAR</button>
-          </div>
         </section>
+            
+            
+          <section class = "leaderboard" id ="leaderboard">
+            <h2>High Scores</h2>
+                <ol>
+                  <li id = "record"></li>
+                </ol>
+            <div>
+              <button type = "button" class="btn" id= "goBack">BACK</button>
+              <button type = "button" class="btn" id= "clear">CLEAR</button>
+            </div>
+          </section>
       </main>
-
         <!-- Linking Javascript -->
         <script src = "./Script/script.js"></script>
       </body>
