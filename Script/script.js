@@ -146,8 +146,12 @@ var form = document.querySelector(".inputform")
 var cleanScores = document.querySelector("#clear");
 // High score button
 var hiscorebtn = document.querySelector("#hiscore");
-// quiz starts here.
+//makes list elements
+var divEl = document.createElement("div");
+//Buttons for the highscore page
+var finalpage = document.querySelector("#finalpage");
 
+// quiz starts here.
 function startQuiz() {
     //variables for the quiz
     quizArray = 0;
@@ -181,8 +185,8 @@ function nextpage() {
             mkBtn.classList.add("btn");
             mkBtn.innerHTML = questions[quizArray].answer[i].choice;
             bigBox.style.display = "none";
-            questionEl.style.display = "flex";
-            answerEl.style.display = "flex";
+            questionEl.style.display = "block";
+            answerEl.style.display = "block";
             answerEl.appendChild(mkBtn);
             if (questions[quizArray].answer[i].id === questions[quizArray].hit) {
                 mkBtn.addEventListener("click", ansCorrect);
@@ -194,7 +198,7 @@ function nextpage() {
 
 // Adds to your score if you get an answer correct.
 function ansCorrect(){
-    points+ 1;
+    points++;
     quizArray++;
     clearPage();
     nextpage();
@@ -240,7 +244,6 @@ function stopQuiz() {
 function scoreMgr() {
     scorePage.style.display = "none";
     leaderboard.style.display = "block";
-    leaderboard.classList.add("leaderboard");
 
     // Retrieving and trimming the input
     var initialValue = initials.value.trim();
@@ -268,15 +271,15 @@ function scoreMgr() {
 function hiscores() {
     bigBox.style.display = "none";
     leaderboard.style.display = "block";
+    finalpage.style.display = "block";
 
     leaderboard.innerHTML = "";
 
     for (let i=0; i < userHiScore.length; i++) {
             var divEl = document.createElement("div");
-            divEl.textContent =
-                leaderboard.innerHTML=
+            divEl.innerHTML =
                 i+
-                i+
+                1+
                 "."+userHiScore[i].initials +
                 "-" +
                 userHiScore[i].points;
@@ -290,6 +293,7 @@ function startOver() {
 
     leaderboard.style.display = "none";
     bigBox.style.display = "block";
+    finalpage.style.display = "none";
 }
 
 function clearScore() {
@@ -308,7 +312,7 @@ function showScore() {
 quizbtn.addEventListener("click", startQuiz);
 submitBtn.addEventListener("click", scoreMgr);
 cleanScores.addEventListener("click", clearScore);
-hiscorebtn.addEventListener("click", hiscores);
+hiscorebtn.addEventListener("click", showScore);
 
 goback.addEventListener("click", startOver); {
     scorePage.style.display = "none";
