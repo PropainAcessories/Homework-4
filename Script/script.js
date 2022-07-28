@@ -104,7 +104,7 @@ if (localStorage.getItem("userHiScore") !== null) {
         userHiScore = JSON.parse(localStorage.getItem("userHiScore"));
 };
 
-console.log(userHiScore)
+
 
 // Variable to check if quiz is ongoing
 var inQuiz = false;
@@ -194,7 +194,7 @@ function nextpage() {
 
 // Adds to your score if you get an answer correct.
 function ansCorrect(){
-    points++;
+    points+ 1;
     quizArray++;
     clearPage();
     nextpage();
@@ -240,7 +240,7 @@ function stopQuiz() {
 function scoreMgr() {
     scorePage.style.display = "none";
     leaderboard.style.display = "block";
-
+    leaderboard.classList.add("leaderboard");
 
     // Retrieving and trimming the input
     var initialValue = initials.value.trim();
@@ -251,7 +251,7 @@ function scoreMgr() {
         typeof initials.value === "string" &&
         initialValue.toLowerCase().match(/^[a-z]+$/)
     ) {
-        userHiScore.push({initials: initialValue, score: points});
+        userHiScore.push({initials: initialValue, points: points});
         localStorage.setItem("userHiScore", JSON.stringify(userHiScore));
 
         //clear page before hiscores
@@ -268,20 +268,19 @@ function scoreMgr() {
 function hiscores() {
     bigBox.style.display = "none";
     leaderboard.style.display = "block";
-    leaderboard.classList.add
 
-    leaderboard.textContent = "";
+    leaderboard.innerHTML = "";
 
     for (let i=0; i < userHiScore.length; i++) {
-            var liEl = document.createElement("li");
-            liEl.textContent =
+            var divEl = document.createElement("div");
+            divEl.textContent =
                 leaderboard.innerHTML=
                 i+
                 i+
                 "."+userHiScore[i].initials +
                 "-" +
                 userHiScore[i].points;
-            leaderboard.appendChild("li");
+            leaderboard.appendChild(divEl);
     }
 };
 
