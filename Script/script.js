@@ -69,7 +69,7 @@ var questions = [
     {
         question: "What does the push method do?",
         answer: [
-            {choice: "Puts items to an object or array", id: "a"},
+            {choice: "Pushes items or objects together in an array", id: "a"},
             {choice: "Pushes weaker code out of the way", id: "b"},
             {choice: "Git pushes so you don't have to", id: "c"},
             {choice: "All of the above", id: "d"},
