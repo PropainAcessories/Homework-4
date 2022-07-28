@@ -29,6 +29,7 @@ header {
     background-color: purple;
     min-width: 100%;
     min-height: auto;
+    flex: 0 2 0;
 }
 
 h1 {
