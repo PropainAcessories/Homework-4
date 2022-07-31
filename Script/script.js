@@ -200,6 +200,7 @@ function nextpage() {
 function ansCorrect(){
     points++;
     quizArray++;
+    alert("CORRECT!");
     clearPage();
     nextpage();
 }
@@ -208,6 +209,7 @@ function ansCorrect(){
 function ansWrong(){
     timer = timer - 5;
     quizArray++;
+    alert("WRONG");
     clearPage();
     nextpage();
 }
