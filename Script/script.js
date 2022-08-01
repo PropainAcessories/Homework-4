@@ -200,7 +200,7 @@ function nextpage() {
 function ansCorrect(){
     points++;
     quizArray++;
-    alert("CORRECT!");
+    time.innerHTML = timer + " -CORRECT!";
     clearPage();
     nextpage();
 }
@@ -209,7 +209,7 @@ function ansCorrect(){
 function ansWrong(){
     timer = timer - 5;
     quizArray++;
-    alert("WRONG");
+    time.innerHTML = timer + " -WRONG";
     clearPage();
     nextpage();
 }
